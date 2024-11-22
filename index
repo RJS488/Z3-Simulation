@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Der erste Computer - Z3 von Konrad Zuse</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #222;
+            color: #00FF00;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: #00FF00;
+            text-shadow: 2px 2px 5px #000;
+            font-size: 48px;
+            animation: blink 1s step-start infinite;
+        }
+        h2 {
+            color: #00FF00;
+            font-size: 36px;
+            animation: blink 1s step-start infinite;
+        }
+        .content {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #00FF00;
+            display: inline-block;
+            max-width: 80%;
+            animation: fadeIn 2s;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .image-container {
+            margin: 20px 0;
+        }
+        img {
+            border: 2px solid #00FF00;
+            max-width: 100%;
+            height: auto;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #00FF00;
+        }
+        
+        /* Blink-Animation für Retro-Stil */
+        @keyframes blink {
+            50% { color: transparent; }
+        }
+        
+        /* Fade-In Animation für Inhalt */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Flimmernde Bildschirmränder */
+        .screen-border {
+            border: 5px solid #00FF00;
+            padding: 20px;
+            position: relative;
+            animation: flicker 0.1s step-start infinite;
+        }
+
+        @keyframes flicker {
+            0% { border-color: #00FF00; }
+            50% { border-color: #008000; }
+            100% { border-color: #00FF00; }
+        }
+
+        /* Z3-Relais Animation */
+        .relais {
+            width: 20px;
+            height: 20px;
+            margin: 5px;
+            background-color: #00FF00;
+            border-radius: 50%;
+            display: inline-block;
+            animation: relaisAnimation 2s infinite;
+        }
+
+        @keyframes relaisAnimation {
+            0% { background-color: #00FF00; }
+            50% { background-color: #FF0000; }
+            100% { background-color: #00FF00; }
+        }
+
+        .terminal {
+            background-color: black;
+            color: #00FF00;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 20px;
+            width: 70%;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .terminal input {
+            background: none;
+            border: none;
+            color: #00FF00;
+            width: 100%;
+            font-size: 18px;
+            margin-top: 10px;
+            outline: none;
+        }
+
+        .terminal p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Der erste Computer: Z3 von Konrad Zuse</h1>
+
+    <div class="screen-border">
+        <div class="content">
+            <h2>Was ist der Z3?</h2>
+            <p>Der Z3 war der weltweit erste funktionsfähige vollautomatische digitale Computer. Entwickelt von dem deutschen Ingenieur Konrad Zuse im Jahr 1941, war er eine der ersten Maschinen, die in der Lage war, Berechnungen auf Basis von Programmen durchzuführen.</p>
+            
+            <div class="image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Z3_computer.jpg" alt="Z3 Computer">
+            </div>
+
+            <h2>Merkmale des Z3</h2>
+            <ul>
+                <li>Verwendete Relais statt elektronischer Bauteile</li>
+                <li>Besitze 22-bitige Wortlänge</li>
+                <li>Er konnte arithmetische und logische Operationen durchführen</li>
+                <li>Er war programmierbar durch Lochstreifen</li>
+            </ul>
+
+            <h2>Ein Meilenstein in der Computergeschichte</h2>
+            <p>Obwohl der Z3 nie kommerziell genutzt wurde, gilt er als ein entscheidender Schritt in der Entwicklung der modernen Computertechnik. Der Z3 ebnete den Weg für spätere Computer, wie den ENIAC und die heutigen Systeme, die Millionen von Berechnungen pro Sekunde durchführen können.</p>
+        </div>
+    </div>
+
+    <!-- Interaktive Z3 Eingabe -->
+    <div class="terminal">
+        <p>Gib einen Befehl ein, um den Z3 zu steuern (z.B. 'addiere 5 und 3', 'subtrahiere 7 von 10', 'multipliziere 4 mit 3'):</p>
+        <input id="userInput" type="text" placeholder="Beispiel: addiere 5 und 3" />
+        <p id="output"></p>
+    </div>
+
+    <div class="footer">
+        <p>Erstellt im Retro-Stil von ChatGPT | &copy; 2024</p>
+    </div>
+
+    <script>
+        // Z3 Simulationslogik mit spezifischen Befehlen
+        document.getElementById('userInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                let input = event.target.value.trim().toLowerCase();
+                let output = document.getElementById('output');
+                
+                let result;
+                
+                // Befehl "addiere"
+                if (input.startsWith('addiere')) {
+                    let numbers = input.match(/\d+/g);
+                    if (numbers && numbers.length === 2) {
+                        result = parseInt(numbers[0]) + parseInt(numbers[1]);
+                    } else {
+                        result = "Fehler: Ungültige Eingabe!";
+                    }
+                }
+                // Befehl "subtrahiere"
+                else if (input.startsWith('subtrahiere')) {
+                    let numbers = input.match(/\d+/g);
+                    if (numbers && numbers.length === 2) {
+                        result = parseInt(numbers[1]) - parseInt(numbers[0]);
+                    } else {
+                        result = "Fehler: Ungültige Eingabe!";
+                    }
+                }
+                // Befehl "multipliziere"
+                else if (input.startsWith('multipliziere')) {
+                    let numbers = input.match(/\d+/g);
+                    if (numbers && numbers.length === 2) {
+                        result = parseInt(numbers[0]) * parseInt(numbers[1]);
+                    } else {
+                        result = "Fehler: Ungültige Eingabe!";
+                    }
+                }
+                // Wenn der Befehl unbekannt ist
+                else {
+                    result = "Fehler: Unbekannter Befehl!";
+                }
+
+                // Ausgabe des Ergebnisses
+                output.innerHTML = `Ergebnis: ${result}`;
+            }
+        });
+    </script>
+</body>
+</html>
